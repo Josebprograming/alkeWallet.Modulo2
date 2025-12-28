@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alke Wallet - Historial de Transacciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <img src="/assets/img/AWlogo.png" alt="Alke Wallet Logo" class="mx-auto d-block"
+            style="width: 150px; height: auto; border-radius: 10px;">
+        <h1 class="text-center">Historial de Transacciones</h1>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deposit.html">Depositar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sendmoney.html">Enviar dinero</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 class="text-center mt-4">$ Saldo: 500.000,00</h2>
+    <div class="container mt-5">
+        <h2>Transacciones Recientes</h2>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-success">
+                    <td>2025-06-01</td>
+                    <td>Depósito vía Tarjeta de Crédito</td>
+                    <td>$200.000,00</td>
+                    <td>Completado</td>
+                </tr>
+                <tr class="table-danger">
+                    <td>2025-05-28</td>
+                    <td>Envío a Juan Pérez</td>
+                    <td>-$50.000,00</td>
+                    <td>Completado</td>
+                </tr>
+                <tr class="table-success">
+                    <td>2025-05-25</td>
+                    <td>Depósito vía PayPal</td>
+                    <td>$150.000,00</td>
+                    <td>Completado</td>
+                </tr>
+                <tr class="table-success">
+                    <td>2025-05-20</td>
+                    <td>Depósito vía Transferencia Bancaria</td>
+                    <td>$200.000,00</td>
+                    <td>Completado</td>
+                </tr>
+            <tfoot class="table-secondary">
+                <tr>
+                    <th colspan="3">Total Ingresos:</th>
+                    <th>$550.000,00</th>
+                </tr>
+                <tr>
+                    <th colspan="3">Total Depósitos:</th>
+                    <th>$350.000,00</th>
+                </tr>
+                <tr>
+                    <th colspan="3">Total Egresos:</th>
+                    <th>-$50.000,00</th>
+                </tr>
+                <tr>
+                    <th colspan="3">Saldo Neto:</th>
+                    <th>$500.000,00</th>
+                </tr>
+                </tbody>
+        </table>
+        <button class="btn btn-secondary" onclick="window.location.href='menu.html'">Volver al Menú</button>
+    </div>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <div class="container-fluid justify-content-center">
+            <span class="navbar-text">
+                &copy; 2025 Alke Wallet
+            </span>
+        </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
