@@ -1,0 +1,24 @@
+#logo{
+    box-shadow: 0px 0px 20px #000;
+    border-radius: 10px
+}
+
+#topBar{
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 10px;
+}
+.botones-nav .btn{
+    width: 220px;
+    text-align: center;
+    margin: 1px auto;
+    display:block;
+}
+@media (max-width: 576px) {
+  .botones-nav .btn {
+    width: 100%; 
+  }
+}
+
+main{
+    background-color: skyblue;
+}
