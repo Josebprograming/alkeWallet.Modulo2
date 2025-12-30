@@ -13,6 +13,31 @@
   display: block;
 }
 
+/* Index-specific header and hero styles */
+#index-main #logo {
+  box-shadow: none; /* avoid floating visual */
+  border-radius: 0 0 10px 10px;
+  padding: 1.25rem 0;
+  background-color: rgb(10, 25, 47); /* same tone as logo */
+}
+
+#index-main #logo h1,
+#index-main #logo p {
+  color: rgb(240, 248, 255);
+  margin: 0;
+}
+
+#index-main .card {
+  background-color: rgba(10, 25, 47, 0.95);
+  color: rgb(240, 248, 255);
+  border: none;
+  border-radius: 10px;
+}
+
+#index-main .card p { color: rgba(240,248,255,0.95); }
+
+#index-main .logo-img { margin-top: 0.25rem; }
+
 #topBar {
   box-shadow: 0px 0px 5px #000;
   border-radius: 10px;
