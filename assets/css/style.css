@@ -86,3 +86,10 @@ footer {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+#ingreso {
+  width: 220px;
+  text-align: center;
+  margin: 1px auto;
+  display: block;
+}
