@@ -5,6 +5,14 @@
   color: rgb(240, 248, 255);
 }
 
+
+.logo-img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
 #topBar {
   box-shadow: 0px 0px 5px #000;
   border-radius: 10px;
@@ -18,7 +26,7 @@
 }
 
 .menu-page .botones-nav .btn {
-  background-color: rgb(0, 123, 255); /* color requerido solo para menu */
+  background-color: rgb(0, 123, 255); 
   color: rgb(240, 248, 255);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background-color .15s ease, box-shadow .15s ease;
@@ -49,13 +57,13 @@ main {
   flex: 1 0 auto;
   background-color: rgb(32, 99, 155);
   color: rgb(240, 248, 255);
-  padding-bottom: 60px; /* espacio para el footer fijo */
+  padding-bottom: 60px; 
   box-sizing: border-box;
 }
 
 footer {
   color: rgb(173, 200, 230);
-  height: 0; /* el navbar es fixed, el contenedor footer no debe ocupar espacio */
+  height: 0; 
   overflow: visible;
 }
 
@@ -85,4 +93,45 @@ footer {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#transactions-section #transactions-table {
+  border-radius: 10px;
+  overflow: hidden; 
+  border-collapse: separate; 
+}
+#transactions-section #transactions-table thead th:first-child { border-top-left-radius: 10px; }
+#transactions-section #transactions-table thead th:last-child { border-top-right-radius: 10px; }
+#transactions-section #transactions-table tbody tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+#transactions-section #transactions-table tbody tr:last-child td:last-child { border-bottom-right-radius: 10px; }
+
+#transactions-section .resumen-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#transactions-section .resumen-table {
+  width: auto;
+  max-width: 480px;
+  border-radius: 10px;
+  overflow: hidden;
+  color: rgb(240, 248, 255) !important; /* ensure contrast */
+}
+
+#transactions-section .resumen-table th,
+#transactions-section .resumen-table td {
+  padding: .75rem 1rem;
+  border: none; 
+}
+
+#transactions-section .resumen-table.table.bg-info {
+  background-color: rgba(23, 162, 184, 0.95); 
+}
+
+@media (max-width: 576px) {
+  #transactions-section .resumen-table {
+    max-width: 100%;
+    margin: 0 1rem;
+  }
 }

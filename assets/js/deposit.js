@@ -1,17 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const saldoElement = document.getElementById("saldo");
   const depositForm = document.getElementById("deposit-form");
 
-  // Inicializar saldo si no existe
-  if (!localStorage.getItem("saldo")) {
-    localStorage.setItem("saldo", "0");
-  }
-  // Inicializar transacciones si no existe
-  if (!localStorage.getItem("transacciones")) {
-    localStorage.setItem("transacciones", JSON.stringify([]));
-  }
-
-  // Mostrar saldo actual
+  // Inicializar almacenamiento y mostrar saldo
+  initStorage();
   actualizarSaldoUI();
 
   depositForm.addEventListener("submit", (e) => {
@@ -29,23 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Obtener saldo actual (asegurando número válido)
-    let saldoActual = parseFloat(localStorage.getItem("saldo")) || 0;
-
-    // Actualizar saldo
+    // Actualizar saldo usando utils
+    let saldoActual = getSaldo();
     saldoActual += amount;
-    localStorage.setItem("saldo", saldoActual.toString());
+    setSaldo(saldoActual);
 
-    // Guardar transacción
-    const transacciones = JSON.parse(localStorage.getItem("transacciones")) || [];
-    transacciones.push({
+    // Guardar transacción con saldoAfter
+    addTransaccion({
       tipo: "Depósito",
       cantidad: amount,
       metodo: method,
       descripcion: `Depósito vía ${method}`,
-      fecha: new Date().toLocaleString()
+      fecha: new Date().toLocaleString('es-CL'),
+      saldoAfter: saldoActual
     });
-    localStorage.setItem("transacciones", JSON.stringify(transacciones));
 
     // Actualizar UI
     actualizarSaldoUI();
@@ -53,9 +41,4 @@ document.addEventListener("DOMContentLoaded", () => {
     alert(`Depósito exitoso de $${amount.toLocaleString("es-CL")} mediante ${method}`);
     depositForm.reset();
   });
-
-  function actualizarSaldoUI() {
-    const saldoActual = parseFloat(localStorage.getItem("saldo")) || 0;
-    saldoElement.textContent = `$ Saldo: ${saldoActual.toLocaleString("es-CL")}`;
-  }
 });

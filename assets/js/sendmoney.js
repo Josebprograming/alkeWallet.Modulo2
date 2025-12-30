@@ -1,16 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const saldoElement = document.getElementById("saldo");
     const sendmoneyForm = document.getElementById("sendmoney-form");
     const destinatarioSelect = document.getElementById("destinatario");
 
-    // Inicializar saldo y transacciones si no existen
-    if (!localStorage.getItem("saldo")) {
-        localStorage.setItem("saldo", "0");
-    }
-    if (!localStorage.getItem("transacciones")) {
-        localStorage.setItem("transacciones", JSON.stringify([]));
-    }
-
+    // Inicializar almacenamiento y mostrar saldo
+    initStorage();
     actualizarSaldoUI();
 
     sendmoneyForm.addEventListener("submit", (e) => {
@@ -28,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        let saldoActual = parseFloat(localStorage.getItem("saldo"));
+        let saldoActual = getSaldo();
 
         if (amount > saldoActual) {
             alert("Saldo insuficiente");
@@ -37,26 +30,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Actualizar saldo
         saldoActual -= amount;
-        localStorage.setItem("saldo", saldoActual.toString());
+        setSaldo(saldoActual);
 
-        // Guardar transacción
-        const transacciones = JSON.parse(localStorage.getItem("transacciones"));
-        transacciones.push({
+        // Guardar transacción con saldoAfter
+        addTransaccion({
             tipo: "Transferencia",
             cantidad: amount,
             destino: destinatario,
             descripcion: `Envío a ${destinatario}`,
-            fecha: new Date().toLocaleString()
+            fecha: new Date().toLocaleString('es-CL'),
+            saldoAfter: saldoActual
         });
-        localStorage.setItem("transacciones", JSON.stringify(transacciones));
 
         actualizarSaldoUI();
         alert(`Se enviaron $${amount.toLocaleString("es-CL")} a ${destinatario}`);
         sendmoneyForm.reset();
     });
-
-    function actualizarSaldoUI() {
-        const saldoActual = parseFloat(localStorage.getItem("saldo"));
-        saldoElement.textContent = `$ Saldo: ${saldoActual.toLocaleString("es-CL")}`;
-    }
 });

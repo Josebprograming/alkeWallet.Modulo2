@@ -13,11 +13,10 @@
 <body>
     <main>
         <div id="logo" class="container-fluid">
-            <img src="/assets/img/AWlogo.png" alt="Alke Wallet Logo" class="mx-auto d-block"
-                style="width: 150px; height: auto; border-radius: 10px;">
+            <img src="/assets/img/AWlogo.png" alt="Alke Wallet Logo" class="mx-auto d-block logo-img">
             <h1 class="text-center">Historial de Transacciones</h1>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <nav id="navMenu" class="navbar navbar-expand-lg navbar-light bg-info">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,30 +33,37 @@
                         <li class="nav-item">
                             <a class="nav-link" href="sendmoney.html">Enviar dinero</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Cerrar Sesión</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <h2 id="saldo" class="text-center mt-4">$ Saldo: 0</h2>
-        <div class="container mt-5">
+        <div id="transactions-section" class="container mt-5">
             <h2>Transacciones Recientes</h2>
-            <table class="table table-striped">
+            <table id="transactions-table" class="table table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Fecha</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Estado</th>
+                        <th scope="col">Saldo</th>
                     </tr>
                 </thead>
                 <tbody id="transacciones-body">
                 </tbody>
-                <tfoot id="resumen" class="table-secondary">
-                </tfoot>
             </table>
+            <div class="resumen-container">
+                <table id="resumen-table" class="table bg-info resumen-table" aria-label="Resumen de transacciones">
+                    <tbody id="resumen-body"></tbody>
+                </table>
+            </div>
         </div>
-        <button class="btn btn-secondary" onclick="window.location.href='menu.html'">Volver al Menú</button>
+        <div class="text-center mt-3">
+            <button class="btn btn-secondary" onclick="window.location.href='menu.html'">Volver al Menú</button>
         </div>
         <footer>
             <nav class="navbar fixed-bottom navbar-light bg-light">

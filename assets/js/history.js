@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const saldoElement = document.getElementById("saldo");
   const transaccionesBody = document.getElementById("transacciones-body");
-  const resumenElement = document.getElementById("resumen");
+  const resumenBody = document.getElementById("resumen-body");
 
   initStorage();
   actualizarUI();
@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const saldoActual = getSaldo();
     const transacciones = getTransacciones();
 
-    // Actualizar saldo
-    saldoElement.textContent = `$ Saldo: ${saldoActual.toLocaleString("es-CL")}`;
+    // Actualizar saldo (usando utils)
+    actualizarSaldoUI();
 
     // Limpiar tabla
     transaccionesBody.innerHTML = "";
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalDepositos = 0;
     let totalEgresos = 0;
 
-    // Renderizar transacciones
+    // Renderizar transacciones (mostrando Saldo después de cada transacción si está disponible)
     transacciones.forEach(tx => {
       const fila = document.createElement("tr");
 
@@ -33,34 +33,39 @@ document.addEventListener("DOMContentLoaded", () => {
         totalEgresos += tx.cantidad;
       }
 
+      const monto = tx.tipo === "Depósito" ? `$${tx.cantidad.toLocaleString("es-CL")}` : `-$${tx.cantidad.toLocaleString("es-CL")}`;
+      const saldoDespues = tx.saldoAfter !== undefined ? `$${Number(tx.saldoAfter).toLocaleString("es-CL")}` : "";
+
       fila.innerHTML = `
         <td>${tx.fecha}</td>
         <td>${tx.tipo}</td>
         <td>${tx.descripcion}</td>
-        <td>${tx.tipo === "Depósito" ? "$" + tx.cantidad.toLocaleString("es-CL") : "-$" + tx.cantidad.toLocaleString("es-CL")}</td>
-        <td>Completado</td>
+        <td>${monto}</td>
+        <td>${saldoDespues}</td>
       `;
       transaccionesBody.appendChild(fila);
     });
 
-    // Resumen
-    resumenElement.innerHTML = `
-      <tr>
-        <th colspan="3">Total Ingresos:</th>
-        <th>$${totalIngresos.toLocaleString("es-CL")}</th>
-      </tr>
-      <tr>
-        <th colspan="3">Total Depósitos:</th>
-        <th>$${totalDepositos.toLocaleString("es-CL")}</th>
-      </tr>
-      <tr>
-        <th colspan="3">Total Egresos:</th>
-        <th>-$${totalEgresos.toLocaleString("es-CL")}</th>
-      </tr>
-      <tr>
-        <th colspan="3">Saldo Neto:</th>
-        <th>$${saldoActual.toLocaleString("es-CL")}</th>
-      </tr>
-    `;
+    // Resumen (escrito en tabla separada dentro de #transactions-section)
+    if (resumenBody) {
+      resumenBody.innerHTML = `
+        <tr>
+          <th>Total Ingresos:</th>
+          <td>$${totalIngresos.toLocaleString("es-CL")}</td>
+        </tr>
+        <tr>
+          <th>Total Depósitos:</th>
+          <td>$${totalDepositos.toLocaleString("es-CL")}</td>
+        </tr>
+        <tr>
+          <th>Total Egresos:</th>
+          <td>-$${totalEgresos.toLocaleString("es-CL")}</td>
+        </tr>
+        <tr>
+          <th>Saldo Neto:</th>
+          <td>$${saldoActual.toLocaleString("es-CL")}</td>
+        </tr>
+      `;
+    }
   }
 });
