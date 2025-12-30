@@ -1,24 +1,88 @@
-#logo{
-    box-shadow: 0px 0px 20px #000;
-    border-radius: 10px
+#logo {
+  box-shadow: 0px 0px 20px #000;
+  border-radius: 10px;
+  background-color: rgb(10, 25, 47);
+  color: rgb(240, 248, 255);
 }
 
-#topBar{
-    box-shadow: 0px 0px 5px #000;
-    border-radius: 10px;
+#topBar {
+  box-shadow: 0px 0px 5px #000;
+  border-radius: 10px;
 }
-.botones-nav .btn{
-    width: 220px;
-    text-align: center;
-    margin: 1px auto;
-    display:block;
+
+.botones-nav .btn {
+  width: 220px;
+  text-align: center;
+  margin: 1px auto;
+  display: block;
 }
+
+.menu-page .botones-nav .btn {
+  background-color: rgb(0, 123, 255); /* color requerido solo para menu */
+  color: rgb(240, 248, 255);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color .15s ease, box-shadow .15s ease;
+}
+
+.menu-page .botones-nav .btn:hover,
+.menu-page .botones-nav .btn:focus {
+  background-color: rgb(0, 105, 217);
+  color: rgb(240, 248, 255);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 @media (max-width: 576px) {
   .botones-nav .btn {
-    width: 100%; 
+    width: 100%;
   }
 }
 
-main{
-    background-color: skyblue;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1 0 auto;
+  background-color: rgb(32, 99, 155);
+  color: rgb(240, 248, 255);
+  padding-bottom: 60px; /* espacio para el footer fijo */
+  box-sizing: border-box;
+}
+
+footer {
+  color: rgb(173, 200, 230);
+  height: 0; /* el navbar es fixed, el contenedor footer no debe ocupar espacio */
+  overflow: visible;
+}
+
+.navbar.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  max-height: 50px;
+  padding-top: 0;
+  padding-bottom: 0;
+  z-index: 1030;
+}
+
+.navbar.fixed-bottom .container-fluid {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.navbar.fixed-bottom .navbar-text {
+  margin: 0;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

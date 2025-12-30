@@ -21,12 +21,43 @@
       }, 50);
     }
 
+    function showAlert(type, message, delay = 2000) {
+
+      const container = document.querySelector('.container.sm') || document.querySelector('main');
+      if (!container) return;
+
+
+      const existing = container.querySelector('.alert');
+      if (existing) {
+        existing.parentNode.removeChild(existing);
+      }
+
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type}`;
+      alertDiv.setAttribute('role', 'alert');
+      alertDiv.textContent = message;
+
+      container.insertBefore(alertDiv, container.firstChild);
+
+    
+      alertDiv.style.opacity = 1;
+
+      setTimeout(() => {
+        fadeOut(alertDiv);
+        setTimeout(() => {
+          if (alertDiv.parentNode) alertDiv.parentNode.removeChild(alertDiv);
+        }, 600);
+      }, delay);
+
+      return alertDiv;
+    }
+
     signupBtn.addEventListener("click", () => {
       const email = emailInput.value.trim();
       const password = passwordInput.value.trim();
 
       if (!email || !password) {
-        alert("Por favor ingrese correo y contraseña");
+        showAlert('warning', 'Por favor ingrese correo y contraseña');
         return;
       }
 
@@ -35,24 +66,27 @@
       isRegistered = true;
       fadeOut(signupBtn);
       formTitle.textContent = "Iniciar Sesión";
-      alert("Registro exitoso, ahora inicia sesión");
+      showAlert('success', 'Registro exitoso, ahora inicia sesión');
       emailInput.value = "";
       passwordInput.value = "";
     });
+
     loginBtn.addEventListener("click", () => {
       const email = emailInput.value.trim();
       const password = passwordInput.value.trim();
 
       if (!isRegistered) {
-        alert("Por favor, registrarse primero");
+        showAlert('warning', 'Por favor, registrarse primero');
         return;
       }
 
       if (email === registeredEmail && password === registeredPassword) {
-        alert("Inicio de sesión exitoso");
-        window.location.href = "menu.html";
+        showAlert('success', 'Inicio de sesión exitoso, serás redirigido al menu principal');
+        setTimeout(() => {
+          window.location.href = "menu.html";
+        }, 2600);
       } else {
-        alert("Correo o contraseña incorrectos, intente nuevamente");
+        showAlert('danger', 'Correo o contraseña incorrectos, intente nuevamente');
       }
     });
   });
