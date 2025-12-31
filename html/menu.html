@@ -7,13 +7,13 @@
     <title>Alke Wallet - Menú Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body class="menu-page">
     <main>
         <div id="logo" class="container-fluid">
-            <img src="/assets/img/AWlogo.png" alt="Alke Wallet Logo" class="mx-auto d-block"
+            <img src="../assets/img/AWlogo.png" alt="Alke Wallet Logo" class="mx-auto d-block"
                 style="width: 150px; height: auto; border-radius: 10px;">
             <h1 class="text-center">Menú Principal</h1>
         </div>
@@ -21,6 +21,9 @@
         <div class="container mt-5" style="max-width: 400px;">
             <p class="text-center">Seleccione una opción del menú para comenzar.</p>
             <ul class="navbar-nav botones-nav" style="text-align: center; list-style: none; gap: 10px;">
+                <li class="nav-item">
+                    <button class="btn btn btn-outline-info" onclick="window.location.href='deposit.html'">Depositar</button>
+                </li>
                 <li class="nav-item">
                     <button class="btn btn btn-outline-info" onclick="window.location.href='sendmoney.html'">Enviar
                         dinero</button>
@@ -31,7 +34,7 @@
                         transacciones</button>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn btn-outline-info" onclick="window.location.href='index.html'">Volver al
+                    <button class="btn btn btn-outline-info" onclick="window.location.href='../index.html'">Volver al
                         Login</button>
                 </li>
             </ul>
