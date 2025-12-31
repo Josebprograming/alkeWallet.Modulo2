@@ -93,3 +93,19 @@ footer {
   margin: 1px auto;
   display: block;
 }
+
+.table-transacciones {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tfoot-resumen {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.tfoot-container {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
