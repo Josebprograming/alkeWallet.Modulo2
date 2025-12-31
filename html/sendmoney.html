@@ -54,6 +54,17 @@
                         <option value="Pedro Gonzalez">Pedro Gonzalez</option>
                     </select>
                 </div>
+                <div class="mb-3" style="max-width: 300px;">
+                    <button type="button" class="btn btn-sm btn-outline-info" id="add-recipient-btn">+ Agregar Nuevo Destinatario</button>
+                </div>
+                <div id="new-recipient-section" class="mb-3" style="max-width: 300px; display: none;">
+                    <label for="new-recipient-name" class="form-label">Nombre del Nuevo Destinatario:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="new-recipient-name" placeholder="Ingrese el nombre">
+                        <button type="button" class="btn btn-success" id="save-recipient-btn">Guardar</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-recipient-btn">Cancelar</button>
+                    </div>
+                </div>
                 <div class="mb-3" style="max-width: 300px; margin-top: 15px;">
                     <label for="amount" class="form-label">Cantidad a Enviar</label>
                     <input type="number" class="form-control" id="amount" placeholder="Ingrese la cantidad" min="0"
